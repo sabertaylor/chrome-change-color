@@ -1,10 +1,15 @@
 {
   "name": "Getting Started Example",
   "version": "1.0",
-  "description": "Build an Extension!",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "description": "Change colors on Kindle and Gutenberg",
+  "permissions": [
+    "activeTab",
+    "declarativeContent"
+  ],
   "background": {
     "scripts": [
+      "jquery/jquery.min.js",
+      "color-picker/spectrum.min.js",
       "background.js"
     ],
     "persistent": false

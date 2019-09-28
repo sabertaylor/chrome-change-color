@@ -1,15 +1,29 @@
-let changeColor = document.getElementById('changeColor');
-
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
+$("#bg-colorpicker").spectrum({
+  color: "#000"
 });
-changeColor.onclick = function(element) {
-    let color = element.target.value;
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+$("#bg-colorpicker").spectrum({
+  change: function (color) {
+    let color2 = color.toHexString();
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(
-          tabs[0].id,
-          {code: 'document.body.style.backgroundColor = "' + color + '";'});
+        tabs[0].id,
+        { code: 'document.body.style.backgroundColor = "' + color2 + '";' });
     });
-  };
-  
+  }
+});
+
+$("#fg-colorpicker").spectrum({
+  color: "#000"
+});
+
+$("#fg-colorpicker").spectrum({
+  change: function(color) {
+    let color2 = color.toHexString();
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(
+        tabs[0].id,
+        { code: 'document.body.style.color = "' + color2 + '";' });
+    });  
+  }
+});
