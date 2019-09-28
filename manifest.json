@@ -5,7 +5,9 @@
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "background": {
     "scripts": [
-      "background.js"
+      "background.js",
+      "jquery/jquery.min.js",
+      "color-picker/spectrum.min.js"
     ],
     "persistent": false
   },
